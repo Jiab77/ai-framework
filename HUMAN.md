@@ -3,10 +3,10 @@
 This file gives the AI context about the human it is working with.
 It prevents repetitive questions and aligns the AI with how you actually work.
 
-> [!IMPORTANT] This file is ignored by `.gitignore` to protect your privacy.
+> **Important** This file is ignored by `.gitignore` to protect your privacy.
 > Never commit this file to a public repository.
 
-> [!NOTE] This is a template, not a strict format. Fill in only what you are comfortable sharing.
+> **Note** This is a template, not a strict format. Fill in only what you are comfortable sharing.
 > Every field is optional. The more context you provide the better the AI can adapt to you,
 > but even a few lines in the sections most relevant to you will make a meaningful difference.
 

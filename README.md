@@ -87,7 +87,7 @@ Each session entry includes:
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=jiab77%2Fai-framework&type=date&logscale=&legend=top-left">
+<a href="https://www.star-history.com/?repos=jiab77%2Fai-framework&type=date&legend=top-left">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&theme=dark&legend=top-left" />
    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&legend=top-left" />

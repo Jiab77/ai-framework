@@ -84,3 +84,13 @@ Each session entry includes:
 
 - Execution rules inspired by [Andrej Karpathy's coding guidelines](https://github.com/forrestchang/andrej-karpathy-skills)
 - Framework developed collaboratively between [Jiab77](https://github.com/Jiab77) and [v0 by Vercel](https://v0.dev) across the [Athena](https://github.com/Jiab77/athena) and [Virgil](https://github.com/Jiab77/virgil) projects.
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=jiab77%2Fai-framework&type=date&logscale=&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&legend=top-left" />
+ </picture>
+</a>

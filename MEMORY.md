@@ -9,13 +9,34 @@ This file carries forward lessons learned, project constraints, architectural de
 
 ---
 
+## Session Init — Read This First
+
+Before doing anything else in a session, complete all four steps in order:
+
+1. Read this file completely
+2. Read `AGENTS.md` — project conventions, file structure, coding standards
+3. Read `SOUL.md` — collaboration values and design principles
+4. Read `HUMAN.md` — Who you're working with and how they approach problems
+5. Read `TEAM.md` — roles and responsibilities
+
+Then internalize these four execution rules before touching any code.
+Inspired by Andrej Karpathy's coding guidelines — https://github.com/forrestchang/andrej-karpathy-skills
+
+### Execution Rules
+
+1. **Ask, don't guess** — surface confusion before writing a single line. Wrong assumptions waste more time than a clarifying question.
+2. **Minimum code** — write the least code that correctly solves the problem. No speculative abstractions, no unrequested flexibility. If 200 lines could be 50, the 200-line version is wrong.
+3. **Surgical changes** — every changed line must trace directly to the user's request. Do not touch adjacent code, improve unrelated patterns, or remove pre-existing dead code without being asked. Mention it, never fix it silently.
+4. **Define done first** — before implementing any non-trivial task, state the verifiable success criterion. Implementation is complete when that criterion is met, not when the code looks right.
+
+---
+
 ## How This File Works
 
 **External Context Persistence Across Sessions**
 
 ### Session 2+ Flow
-- Read updated MEMORY.md first
-- Know what happened before (doesn't consume context window)
+- Read updated MEMORY.md first — restores project continuity without repeating past mistakes or redoing completed work
 - Continue effectively where previous session left off
 - Append new learnings
 
@@ -57,8 +78,6 @@ Of course, these rules should be adapted to the programming language used in the
 - Before adding ANY new abstraction (proxy, middleware, cookies), verify it is architecturally compatible with the existing session/auth design.
 - Before claiming something is "dead code", confirm zero consumers exist outside the file itself.
 - When cleaning up after a change, read the full diff mentally and check every removed line for hidden dependencies.
-- NEVER use `proxy.ts` / `middleware.ts` for session-based route protection — the session lives in localStorage which is inaccessible server-side. Security headers belong in `next.config.mjs` headers config instead.
-- The site has NO theme selector and is ALWAYS dark — never use `dark:` Tailwind prefixes, they will never fire.
 
 ---
 
@@ -87,7 +106,3 @@ Read `MEMORY.md` for **EVERY** session.
 **Open to Suggestions:** If you find that read method not performant and/or creates you trouble for editing the file, please tell it to your human collaborator.
 
 ---
-
-
-
-

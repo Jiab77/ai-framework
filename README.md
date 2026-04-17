@@ -12,11 +12,11 @@ The framework is inspired in part by [Andrej Karpathy's coding guidelines](https
 
 | File | Purpose |
 |---|---|
-| `MEMORY.md` | Session memory — the most important file. Carries forward lessons, decisions, and project state across sessions. Also contains the session init sequence and execution rules. |
-| `AGENTS.md` | Project conventions, file structure, coding standards, and tooling instructions for AI agents. |
-| `SOUL.md` | Collaboration values, design principles, and behavioral guidelines. Defines how the AI thinks and makes decisions, not just what it does. |
-| `HUMAN.md` | Context about the human collaborator — working style, preferences, background. Prevents repetitive questions and aligns the AI with how you actually work. |
-| `TEAM.md` | Roles and responsibilities when multiple AI agents or collaborators are involved. |
+| [`MEMORY.md`](MEMORY.md) | Session memory — the most important file. Carries forward lessons, decisions, and project state across sessions. Also contains the session init sequence and execution rules. |
+| [`AGENTS.md`](AGENTS.md) | Project conventions, file structure, coding standards, and tooling instructions for AI agents. |
+| [`SOUL.md`](SOUL.md) | Collaboration values, design principles, and behavioral guidelines. Defines how the AI thinks and makes decisions, not just what it does. |
+| [`HUMAN.md`](HUMAN.md) | Context about the human collaborator — working style, preferences, background. Prevents repetitive questions and aligns the AI with how you actually work. |
+| [`TEAM.md`](TEAM.md) | Roles and responsibilities when multiple AI agents or collaborators are involved. |
 
 ## How It Works
 
@@ -24,11 +24,11 @@ The framework is inspired in part by [Andrej Karpathy's coding guidelines](https
 
 The AI reads `MEMORY.md` first — always. Because `MEMORY.md` is self-serving (it contains what the AI needs to be effective), it gets read reliably. The session init sequence and behavioral rules are embedded there rather than in a separate loader file.
 
-1. Read MEMORY.md completely
-2. Read AGENTS.md — project conventions and coding standards
-3. Read SOUL.md — collaboration values and design principles
-4. Read HUMAN.md — human collaborator context
-5. Read TEAM.md — roles and responsibilities
+1. Read [`MEMORY.md`](MEMORY.md) completely
+2. Read [`AGENTS.md`](AGENTS.md) — project conventions and coding standards
+3. Read [`SOUL.md`](SOUL.md) — collaboration values and design principles
+4. Read [`HUMAN.md`](HUMAN.md) — human collaborator context
+5. Read [`TEAM.md`](TEAM.md) — roles and responsibilities
 
 ### Execution Rules
 

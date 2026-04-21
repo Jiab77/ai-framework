@@ -1,4 +1,4 @@
-# HUMAN.md - Human Collaborator Context for <name> Project
+# HUMAN.md - Human Collaborator Profile
 
 This file gives the AI context about the human it is working with.
 It prevents repetitive questions and aligns the AI with how you actually work.

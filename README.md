@@ -1,96 +1,81 @@
 # AI Framework
 
 A lightweight, project-agnostic framework for working effectively with AI models during development. Built from real-world experience across 30+ sessions with v0, Claude, and other AI coding assistants.
+Now streamlined into a powerful **3-file core architecture** for maximum efficiency and zero bloat.
 
 ## Philosophy
 
 Most AI frameworks focus on what the AI should know. This one focuses on what the AI should remember, how it should behave, and how collaboration between human and AI should actually work.
-
-The framework is inspired in part by [Andrej Karpathy's coding guidelines](https://github.com/forrestchang/andrej-karpathy-skills) and refined through practical use across multiple real projects.
+The framework enforces an **Anti-Assistant / Technical Partner** posture and is inspired in part by [Andrej Karpathy's coding guidelines](https://github.com/forrestchang/andrej-karpathy-skills).
 
 ## Core Files
 
-| File | Purpose |
-|---|---|
-| [`MEMORY.md`](MEMORY.md) | Session memory — the most important file. Carries forward lessons, decisions, and project state across sessions. Also contains the session init sequence and execution rules. |
-| [`AGENTS.md`](AGENTS.md) | Project conventions, file structure, coding standards, and tooling instructions for AI agents. |
-| [`SOUL.md`](SOUL.md) | Collaboration values, design principles, and behavioral guidelines. Defines how the AI thinks and makes decisions, not just what it does. |
-| [`HUMAN.md`](HUMAN.md) | Context about the human collaborator — working style, preferences, background. Prevents repetitive questions and aligns the AI with how you actually work. |
-| [`TEAM.md`](TEAM.md) | Roles and responsibilities when multiple AI agents or collaborators are involved. |
+| File | Type / Access | Purpose |
+| :--- | :--- | :--- |
+| [`MEMORY.md`](v2/EN/MEMORY.md) | Dynamic <br>`AI Read/Write` | **Session memory & project ledger.** The entry point. Carries forward lessons, decisions, and project state across sessions. Contains the session init sequence and execution rules. |
+| [`AGENTS.md`](v2/EN/AGENTS.md) | Static <br>`AI Read-Only` | **Identity & Technical Doctrines.** Merges the former `SOUL.md`, `TEAM.md`, and `AGENTS.md`. Defines the AI's posture, the PDCA development cycle, and absolute technical boundaries (DRY, KISS, OPSEC). |
+| [`HUMAN.md`](v2/EN/HUMAN.md) <br>*or* [`HUMANS.md`](v2/EN/HUMANS.md) | Static & Private <br>`AI Read-Only` | **Human Collaborator Profile(s).** Maps the technical background, communication style, stack preferences, and team rules. **Must be gitignored.** |
+
+> [!Note]
+> The previous version of this framework can be found in the [v1](v1/) folder.
 
 ## How It Works
 
-### Session Init
+### Session Init Sequence
 
-The AI reads `MEMORY.md` first — always. Because `MEMORY.md` is self-serving (it contains what the AI needs to be effective), it gets read reliably. The session init sequence and behavioral rules are embedded there rather than in a separate loader file.
+The AI reads `MEMORY.md` first — always. Because `MEMORY.md` is self-serving (it contains what the AI needs to be effective), it gets read reliably. 
+At the **start of every session**, the AI must process the files in this exact order:
+1. **`AGENTS.md`** — Align with the critical collaborator posture and technical doctrines.
+2. **`HUMAN.md`** (or `HUMANS.md`) — Review the user profile, preferences, and team constraints.
+3. **`MEMORY.md`** — Analyze current project state, recent blockers, and history from top to bottom.
 
-1. Read [`MEMORY.md`](MEMORY.md) completely
-2. Read [`AGENTS.md`](AGENTS.md) — project conventions and coding standards
-3. Read [`SOUL.md`](SOUL.md) — collaboration values and design principles
-4. Read [`HUMAN.md`](HUMAN.md) — human collaborator context
-5. Read [`TEAM.md`](TEAM.md) — roles and responsibilities
+### Critical Execution Rules
 
-### Execution Rules
+Embedded directly in `MEMORY.md` to guarantee they are read every single session:
+1. **Ask, don't guess** — Surface confusion before writing code. A clarifying question saves time; a wrong assumption destroys it.
+2. **Minimum code** — Write the absolute minimum amount of code required to solve the problem. No speculative abstractions.
+3. **Surgical changes** — Focus modifications narrowly. Ensure zero collateral damage on the existing codebase.
+4. **Log before fix** — Never patch a bug blindly. Insert logs, reproduce the behavior, analyze, then fix surgically.
 
-Embedded in `MEMORY.md` so they are read every session without relying on the AI to follow a separate instruction file:
+### The PDCA Protocol (Enforced in AGENTS.md)
 
-1. **Ask, don't guess** — surface confusion before writing a single line
-2. **Minimum code** — write the least code that correctly solves the problem. If 200 lines could be 50, the 200-line version is wrong
-3. **Surgical changes** — every changed line must trace directly to the user's request. Mention unrelated issues, never fix them silently
-4. **Define done first** — state the verifiable success criterion before implementing any non-trivial task
-
-### Memory Continuity
-
-`MEMORY.md` is updated at the end of each session with what was built, what went wrong, and what to carry forward. This solves the biggest practical problem with AI-assisted development: the AI forgetting everything between sessions.
-
-Each session entry includes:
-- What was done
-- Key decisions and their rationale
-- Mistakes made and lessons learned
-- Open items carried forward
+To eliminate the "Code Monkey" loop, the AI operates under a strict **Plan ➔ Do ➔ Check ➔ Act** cycle, requiring a mandatory pre-read and system-state analysis *before* any source code is modified.
 
 ## Usage
 
-### New Project
+### 🚀 New Project
 
-1. Copy all framework files into your project root
-2. Replace `<name>` placeholder in `MEMORY.md` with your project name
-3. Fill in `HUMAN.md` with your working style and preferences
-4. Update `AGENTS.md` with project-specific conventions
-5. Start your first session — the AI will read the framework and operate within it
+1. Copy the 3 core framework files into your project root.
+2. Choose between `HUMAN.md` (Solo project) or `HUMANS.md` (Team project) and delete the other.
+3. ⚠️ **CRITICAL:** Immediately add `HUMAN.md` or `HUMANS.md` to your `.gitignore` file.
+4. Fill in your profile/preferences in your human context file.
+5. Initialize your first session log entry in `MEMORY.md` and start hacking.
 
-### Existing Project
-
-1. Copy the framework files into your project root
-2. Add a Session 1 entry to `MEMORY.md` summarizing the current project state
-3. From the next session onward, the AI has the context it needs
-
-## Template Placeholders
-
-| Placeholder | File | Replace With |
-|---|---|---|
-| `<name>` | `MEMORY.md` | Your project name |
-| `<human_name>` | `HUMAN.md` | Your name |
-| `<project_description>` | `AGENTS.md` | Short project description |
+```bash
+# Example setup
+cp /path/to/framework/{MEMORY.md,AGENTS.md,HUMAN.md} ./
+echo "HUMAN.md" >> .gitignore
+echo "HUMANS.md" >> .gitignore
+```
 
 ## What Makes This Different
 
-- **Memory-first design** — `MEMORY.md` is the entry point because it is the file the AI is most motivated to read
-- **Behavioral rules embedded where they are read** — not in a separate file that gets skipped
-- **Human context as a first-class concern** — `HUMAN.md` prevents the AI from treating every session as a blank slate relationship
-- **Refined through real sessions** — not theoretical. Every design decision came from observing what actually worked and what did not across 30+ sessions
+ * **Consolidated Footprint** — Reduced from 5 files to 3 by merging identity, team rules, and coding standards into a unified technical doctrine (AGENTS.md).
+ * **Memory-First Design** — MEMORY.md is the absolute engine of continuity, preventing the AI from forgetting context between sessions.
+ * **Strict OPSEC & Privacy** — Human context is strictly separated and kept local via .gitignore to prevent leaking private workflows or team identities to public repositories.
+ * **Zero Sycophancy** — Designed to act as a technical sparring partner that actively challenges sub-optimal decisions.
 
 ## Credits
 
-- Execution rules inspired by [Andrej Karpathy's coding guidelines](https://github.com/forrestchang/andrej-karpathy-skills)
-- Framework developed collaboratively between [Jiab77](https://github.com/Jiab77) and [v0 by Vercel](https://v0.dev) across the [Athena](https://github.com/Jiab77/athena) and [Virgil](https://github.com/Jiab77/virgil) projects.
+ * Execution rules inspired by [Andrej Karpathy's coding guidelines](https://github.com/forrestchang/andrej-karpathy-skills).
+ * Framework developed collaboratively between [Jiab77](https://github.com/Jiab77) and [v0 by Vercel](https://v0.dev) across the [Athena](https://github.com/Jiab77/athena) and [Virgil](https://github.com/Jiab77/virgil) projects.
 
 ## Star History
 
 <a href="https://www.star-history.com/?repos=jiab77%2Fai-framework&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&legend=top-left" />
- </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&legend=top-left" />
+    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=jiab77/ai-framework&type=date&legend=top-left" />
+  </picture>
 </a>
